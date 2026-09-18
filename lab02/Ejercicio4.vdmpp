@@ -1,0 +1,20 @@
+class Ejercicio4
+operations
+    -- Función para verificar si todas las botellas tienen un peso mayor o igual a 480
+    public VerificarLote : seq of real -> bool
+    VerificarLote(botellas) ==
+        return forall x in set elems botellas & x >= 480;
+
+    -- Casos de prueba
+    public EjecutarCasosDePrueba : () ==> bool * bool * bool * bool
+    EjecutarCasosDePrueba() ==
+    (
+        dcl res1 : bool := VerificarLote([480, 482, 481, 485, 490]); -- Debe ser true
+        dcl res2 : bool := VerificarLote([480, 479, 482, 483, 484]); -- Debe ser false
+        dcl res3 : bool := VerificarLote([500, 510, 520, 480, 490]); -- Debe ser true
+        dcl res4 : bool := VerificarLote([470, 480, 482, 490, 495]); -- Debe ser fals
+        
+        return mk_(res1, res2, res3, res4);
+    );
+
+end Ejercicio4
