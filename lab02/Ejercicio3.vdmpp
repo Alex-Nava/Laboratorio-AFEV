@@ -1,0 +1,20 @@
+class Ejercicio3
+operations
+    -- Función principal de monitoreo para verificar si existe alguna temperatura > 120
+    public VerificarAlarma : seq of real -> bool
+    VerificarAlarma(temperaturas) ==
+        return exists t in set elems temperaturas & t > 120;
+
+    -- Casos de prueba solicitados en la guía para validar la función
+    public EjecutarCasosDePrueba : () ==> bool * bool * bool * bool
+    EjecutarCasosDePrueba() ==
+    (
+        dcl res1 : bool := VerificarAlarma([100, 110, 115, 118, 119]); -- Debe ser false
+        dcl res2 : bool := VerificarAlarma([100, 110, 125, 118, 119]); -- Debe ser true
+        dcl res3 : bool := VerificarAlarma([121, 119, 118, 117, 116]); -- Debe ser true
+        dcl res4 : bool := VerificarAlarma([90, 95, 100, 110, 120]);  -- Debe ser false
+        
+        return mk_(res1, res2, res3, res4);
+    );
+
+end Ejercicio3
