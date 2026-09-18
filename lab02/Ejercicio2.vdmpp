@@ -1,0 +1,9 @@
+class Ejercicio2
+operations
+    public Ejercicio2Propuesto : () ==> bool
+    Ejercicio2Propuesto() ==
+        -- Ejercicio 2: Existe un valor en la lista de números [80, 100, 120, 90, 250] tal que el valor es par
+        return exists i in set inds [80, 100, 120, 90, 250] & 
+               [80, 100, 120, 90, 250](i) mod 2 = 0;
+
+end Ejercicio2
