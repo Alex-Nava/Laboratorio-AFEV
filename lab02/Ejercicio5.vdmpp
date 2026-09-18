@@ -1,0 +1,25 @@
+class Ejercicio5
+operations
+    -- Función que evalúa el riesgo volcánico: 
+    -- Retorna true si todas las temperaturas superan los 500°C O si la cantidad de lecturas es exactamente 3.
+    public EvaluarRiesgo : seq of real -> bool
+    EvaluarRiesgo(lecturas) ==
+        let todasSuperan500 = forall t in set elems lecturas & t > 500,
+            tieneTresLecturas = len lecturas = 3
+        in
+            todasSuperan500 or tieneTresLecturas;
+
+    -- Casos de prueba para validar la lógica
+    public EjecutarCasosDePrueba : () ==> bool * bool * bool * bool * bool
+    EjecutarCasosDePrueba() ==
+    (
+        dcl res1 : bool := EvaluarRiesgo([501, 202, 600, 300, 700]); -- false
+        dcl res2 : bool := EvaluarRiesgo([600, 600, 700, 800, 900]); -- true
+        dcl res3 : bool := EvaluarRiesgo([500, 400, 300, 200]);      -- false
+        dcl res4 : bool := EvaluarRiesgo([600, 800, 900, 900]);      -- true
+        dcl res5 : bool := EvaluarRiesgo([100, 100, 200]);            -- true
+        
+        return mk_(res1, res2, res3, res4, res5);
+    );
+
+end Ejercicio5
